@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
+import useUrlParams from '../hooks/useUrlParams';
 
 export default function Home() {
+  const params = useUrlParams();
+  console.log(params);
+
   return (
     <div className={styles.container}>
       <Head>

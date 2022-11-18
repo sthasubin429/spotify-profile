@@ -28,7 +28,7 @@ export default function handler(
   let state = generateRandomString(16);
   let scope = 'user-read-private user-read-email';
 
-  res.redirect('https://accounts.spotify.com/authorize?' +
+  res.redirect(`${process.env.SPOTIFY_API_URL}/authorize?` +
     stringify({
       response_type: 'code',
       client_id: process.env.CLIENT_ID,

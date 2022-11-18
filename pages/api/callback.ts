@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { stringify } from 'querystring';
+import { encodeParams } from '../../utils';
 
 type Data = {
   name: string,
@@ -14,7 +15,7 @@ export default function handler(
   let code = req.query.code || null;
   let state = req.query.state || null;
   let storedState = req.cookies ? req.cookies[stateKey] : null;
-  let url = 'https://accounts.spotify.com/api/token';
+  let url = `${process.env.SPOTIFY_API_URL}/api/token`;
   let body = {
     grant_type: "authorization_code",
     code: code,
@@ -26,7 +27,7 @@ export default function handler(
   }
 
   if (state === null) {
-    res.redirect(`/#${stringify({ error: 'state_mismatch' })}`);
+    res.redirect(`/?${encodeParams({ error: 'state_mismatch' })}`);
   } else {
     fetch(url, {
       method: "POST",
@@ -36,10 +37,12 @@ export default function handler(
     ).then((data) => {
       if (data.ok) {
         data.json().then((response) => {
-          console.log(response);
+          res.redirect(
+            `${process.env.FRONTEND_URI}?${encodeParams(response)}`,
+          );
         })
       } else {
-        res.redirect(`/#${stringify({ error: 'invalid_token' })}`);
+        res.redirect(`/?${encodeParams({ error: 'invalid_token' })}`);
       }
     });
   }
