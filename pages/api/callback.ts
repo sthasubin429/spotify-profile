@@ -1,12 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { getCookie, getCookies } from 'cookies-next';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { stringify } from 'querystring';
 import { encodeParams } from '../../utils';
+import { stateKey } from '../../utils/constant';
 
 type Data = {
   name: string,
 }
-let stateKey = 'spotify_auth_state';
 
 export default function handler(
   req: NextApiRequest,
@@ -14,7 +15,8 @@ export default function handler(
 ) {
   let code = req.query.code || null;
   let state = req.query.state || null;
-  let storedState = req.cookies ? req.cookies[stateKey] : null;
+  let storedState = getCookie(stateKey, { req, res });;
+
   let url = `${process.env.SPOTIFY_API_URL}/api/token`;
   let body = {
     grant_type: "authorization_code",
@@ -26,7 +28,7 @@ export default function handler(
     "Content-Type": "application/x-www-form-urlencoded",
   }
 
-  if (state === null) {
+  if (state === null || state !== storedState) {
     res.redirect(`/?${encodeParams({ error: 'state_mismatch' })}`);
   } else {
     fetch(url, {

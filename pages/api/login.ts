@@ -1,6 +1,7 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { setCookie } from 'cookies-next';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { stringify } from 'querystring';
+import { scope, stateKey } from '../../utils/constant';
 
 type Data = {
   name: string
@@ -26,7 +27,7 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   let state = generateRandomString(16);
-  let scope = 'user-read-private user-read-email';
+  setCookie(stateKey, state, { req, res, maxAge: 60 * 60 * 24 });
 
   res.redirect(`${process.env.SPOTIFY_API_URL}/authorize?` +
     stringify({
