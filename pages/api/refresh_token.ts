@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { stringify } from 'querystring';
 
 type Data = {
-  name: string
+  error?: string
 }
 
 export default function handler(
@@ -11,7 +11,6 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   let refresh_token = req.query.refresh_token;
-  console.log(refresh_token, 'refresh_token');
   let url = `${process.env.SPOTIFY_API_URL}/api/token`;
   let headers = {
     "Authorization": 'Basic ' + Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64'),
@@ -32,6 +31,8 @@ export default function handler(
         delete data.scope;
         res.send(data);
       });
+    } else {
+      res.status(response.status).send({ error: "refresh_token_fail" });
     }
   });
 }
