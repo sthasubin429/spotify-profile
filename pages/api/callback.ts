@@ -39,6 +39,7 @@ export default function handler(
     ).then((data) => {
       if (data.ok) {
         data.json().then((response) => {
+          delete response.scope;
           res.redirect(
             `${process.env.FRONTEND_URI}?${encodeParams(response)}`,
           );
