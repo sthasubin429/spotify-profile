@@ -16,7 +16,7 @@ export default function handler(
     Authorization:
       'Basic ' +
       Buffer.from(
-        process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRETx
+        process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET
       ).toString('base64'),
     'Content-Type': 'application/x-www-form-urlencoded' // eslint-disable-line @typescript-eslint/naming-convention
   };
