@@ -1,6 +1,7 @@
 {
   "name": "spotify-profile",
-  "version": "0.1.0",
+  "description": "Spotify Profile",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +9,8 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "author": "Subin Shrestha <subinshrestha922@gmail.com>",
+  "license": "ISC",
   "dependencies": {
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
