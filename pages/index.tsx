@@ -1,11 +1,9 @@
-import Head from 'next/head';
-import Image from 'next/image';
+import { ReactElement, useEffect, useState } from 'react';
 import useUrlParams from '../hooks/useUrlParams';
-import { useEffect, useState } from 'react';
 import { setAccessToken, setRefreshToken } from '../utils/spotify';
 import useAuthenticated from '../hooks/useAuthenticated';
 
-export default function Home() {
+export default function Home(): ReactElement {
   const params = useUrlParams();
 
   const isAuthenticated = useAuthenticated();
@@ -22,5 +20,13 @@ export default function Home() {
     }
   }, [params]);
 
-  return authenticated ? 'Logged' : 'Hello';
+  return (
+    <>
+      {authenticated ? (
+        <div className="text-base">Logged </div>
+      ) : (
+        <div className="text-base font-bold"> Hello</div>
+      )}
+    </>
+  );
 }

@@ -1,0 +1,9 @@
+{
+  "singleQuote": true,
+  "trailingComma": "none",
+  "arrowParens": "avoid",
+  "proseWrap": "preserve",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "tabWidth": 2
+}
