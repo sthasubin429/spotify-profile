@@ -22,5 +22,5 @@ export default function Home() {
     }
   }, [params]);
 
-  return authenticated ? 'Logged' : 'Hello';
+  return <>{authenticated ? <div className='text-base'>Logged </div> : <div className='text-base font-bold'> Hello</div>}</>;
 }
