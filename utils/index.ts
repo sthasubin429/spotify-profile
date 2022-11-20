@@ -1,3 +1,3 @@
-export const encodeParams = (params: Object) => {
+export const encodeParams = (params: Record<string, unknown>): string => {
   return encodeURIComponent(JSON.stringify(params));
-}
+};
