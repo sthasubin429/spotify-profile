@@ -3,7 +3,7 @@ import { setAccessToken, setRefreshToken } from 'utils/spotify';
 import useUrlParams from 'hooks/useUrlParams';
 import useAuthenticated from 'hooks/useAuthenticated';
 
-const HomePage: React.FC = () => {
+const Home: React.FC = () => {
   const params = useUrlParams();
 
   const isAuthenticated = useAuthenticated();
@@ -26,4 +26,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default Home;
