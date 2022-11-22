@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-const HomePage = dynamic(() => import('components/HomePage'), {
+const HomePage = dynamic(() => import('components/Home'), {
   ssr: false
 });
 
