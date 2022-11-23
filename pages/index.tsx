@@ -1,12 +1,8 @@
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const HomePage = dynamic(() => import('components/Home'), {
-  ssr: false
-});
+const Main = dynamic(() => import('components/Main'), { ssr: false });
 
-const Home: React.FC = () => {
-  return <HomePage />;
-};
-
-export default Home;
+export default function Home(): ReactElement {
+  return <Main />;
+}

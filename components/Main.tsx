@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
+import Login from './Login';
 import { setAccessToken, setRefreshToken } from 'utils/spotify';
 import useUrlParams from 'hooks/useUrlParams';
 import useAuthenticated from 'hooks/useAuthenticated';
 
-const Home: React.FC = () => {
+export default function Main(): ReactElement {
   const params = useUrlParams();
 
   const isAuthenticated = useAuthenticated();
@@ -18,12 +19,10 @@ const Home: React.FC = () => {
   return (
     <>
       {isAuthenticated ? (
-        <div className="text-base">Logged </div>
+        <div className="text-base font-bold"> Logged </div>
       ) : (
-        <div className="text-base font-bold"> Hello</div>
+        <Login />
       )}
     </>
   );
-};
-
-export default Home;
+}
