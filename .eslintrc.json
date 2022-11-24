@@ -10,21 +10,6 @@
     "prettier/prettier": "warn",
     "no-console": "warn",
     "semi": "warn",
-    "@typescript-eslint/naming-convention": [
-      "warn",
-      {
-        "selector": "default",
-        "format": [
-          "camelCase",
-          "strictCamelCase",
-          "PascalCase",
-          "StrictPascalCase",
-          "UPPER_CASE"
-        ],
-        "leadingUnderscore": "allow",
-        "trailingUnderscore": "allow"
-      }
-    ],
     "@typescript-eslint/explicit-member-accessibility": [
       "off",
       {

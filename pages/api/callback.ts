@@ -19,9 +19,9 @@ export default function handler(
 
   let url = `${process.env.SPOTIFY_API_URL}/api/token`;
   let body = {
-    grant_type: 'authorization_code', // eslint-disable-line @typescript-eslint/naming-convention
+    grant_type: 'authorization_code',
     code,
-    redirect_uri: process.env.REDIRECT_URI // eslint-disable-line @typescript-eslint/naming-convention
+    redirect_uri: process.env.REDIRECT_URI
   };
   let headers = {
     Authorization:
@@ -29,7 +29,7 @@ export default function handler(
       Buffer.from(
         process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET
       ).toString('base64'),
-    'Content-Type': 'application/x-www-form-urlencoded' // eslint-disable-line @typescript-eslint/naming-convention
+    'Content-Type': 'application/x-www-form-urlencoded'
   };
 
   if (state === null || state !== storedState) {

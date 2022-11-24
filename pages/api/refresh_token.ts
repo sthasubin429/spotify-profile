@@ -18,11 +18,11 @@ export default function handler(
       Buffer.from(
         process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET
       ).toString('base64'),
-    'Content-Type': 'application/x-www-form-urlencoded' // eslint-disable-line @typescript-eslint/naming-convention
+    'Content-Type': 'application/x-www-form-urlencoded'
   };
   let body = {
-    grant_type: 'refresh_token', // eslint-disable-line @typescript-eslint/naming-convention
-    refresh_token: refreshToken // eslint-disable-line @typescript-eslint/naming-convention
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken
   };
 
   fetch(url, {

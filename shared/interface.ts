@@ -1,7 +1,7 @@
 export interface SpotifyTokenResponse {
-  access_token?: string; // eslint-disable-line @typescript-eslint/naming-convention
-  refresh_token?: string; // eslint-disable-line @typescript-eslint/naming-convention
-  token_type?: string; // eslint-disable-line @typescript-eslint/naming-convention
-  expires_in?: number; // eslint-disable-line @typescript-eslint/naming-convention
+  access_token?: string;
+  refresh_token?: string;
+  token_type?: string;
+  expires_in?: number;
   error?: string;
 }

@@ -33,10 +33,10 @@ export default function handler(
   res.redirect(
     `${process.env.SPOTIFY_API_URL}/authorize?` +
       stringify({
-        response_type: 'code', // eslint-disable-line @typescript-eslint/naming-convention
-        client_id: process.env.CLIENT_ID, // eslint-disable-line @typescript-eslint/naming-convention
+        response_type: 'code',
+        client_id: process.env.CLIENT_ID,
         scope,
-        redirect_uri: process.env.REDIRECT_URI, // eslint-disable-line @typescript-eslint/naming-convention
+        redirect_uri: process.env.REDIRECT_URI,
         state
       })
   );
