@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
 
-export default function Base({
+export default function ProfileLayout({
   children
 }: {
   children: ReactElement;
 }): ReactElement {
   return (
     <>
-      <div className="w-full min-h-screen"> {children} </div>
+      <div> {children} </div>
     </>
   );
 }

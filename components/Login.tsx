@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { ReactElement } from 'react';
 
-function Login(): ReactElement {
+export default function Login(): ReactElement {
   return (
     <div className="min-h-screen grid place-items-center">
       <div className="flex flex-col items-center">
@@ -13,5 +13,3 @@ function Login(): ReactElement {
     </div>
   );
 }
-
-export default Login;
