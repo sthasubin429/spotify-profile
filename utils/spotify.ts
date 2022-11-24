@@ -31,3 +31,8 @@ export const setAccessToken = (accessToken: string): void => {
 export const setRefreshToken = (refreshToken: string): void => {
   setCookie(refreshTokenKey, refreshToken);
 };
+
+export const headers = {
+  Authorization: `Bearer ${getAccessToken()}`,
+  'Content-Type': 'application/json'
+};

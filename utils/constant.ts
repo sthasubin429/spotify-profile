@@ -5,3 +5,4 @@ export const accessTokenKey = 'access_token';
 export const refreshTokenKey = 'refresh_token';
 export const expiresInKey = 'expires_in';
 export const tokenTypeKey = 'token_type';
+export const SPOTIFY_API_BASE_URL = 'https://api.spotify.com';
