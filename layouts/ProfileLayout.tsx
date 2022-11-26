@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import Navbar from 'components/Navbar';
 
 export default function ProfileLayout({
   children
@@ -6,8 +7,9 @@ export default function ProfileLayout({
   children: ReactElement;
 }): ReactElement {
   return (
-    <>
-      <div> {children} </div>
-    </>
+    <div className="relative">
+      <Navbar />
+      <div className="pl-64"> {children} </div>
+    </div>
   );
 }

@@ -7,13 +7,12 @@ module.exports = {
     './layouts/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    colors: {
-      black: '#191414',
-      white: '#ffffff'
-    },
     extend: {
       colors: {
-        primary: '#1DB954'
+        primary: '#1DB954',
+        black: '#191414',
+        white: '#ffffff',
+        blackAlt: '#151111'
       }
     }
   },

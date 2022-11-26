@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react';
+import ProfileLayout from 'layouts/ProfileLayout';
 import { User } from 'shared/interface';
 import { getCurrentUser } from 'spotify/users';
 
@@ -11,10 +12,12 @@ export default function Profile(): ReactElement {
   }, []);
 
   return (
-    <>
-      <div> Profile </div>
-      <div> {CurrentUser.display_name}</div>
-      <div> {CurrentUser.email}</div>
-    </>
+    <ProfileLayout>
+      <>
+        <div> Profile </div>
+        <div> {CurrentUser.display_name}</div>
+        <div> {CurrentUser.email}</div>
+      </>
+    </ProfileLayout>
   );
 }
