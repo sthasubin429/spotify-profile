@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { SpotifyTokenResponse } from '../shared/interface';
+import { SpotifyTokenResponse } from 'interface';
 
 export default function useUrlParams(): SpotifyTokenResponse | null {
   const router = useRouter();

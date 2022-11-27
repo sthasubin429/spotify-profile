@@ -1,22 +1,41 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import ProfileLayout from 'layouts/ProfileLayout';
-import { User } from 'shared/interface';
-import { getCurrentUser } from 'spotify/users';
+import {
+  CurrentUsersProfileResponse,
+  UsersFollowedArtistsResponse
+} from 'interface';
+import { getCurrentUser, getFollowedArtist } from 'spotify';
 
 export default function Profile(): ReactElement {
-  const [CurrentUser, setCurrentUser] = useState({} as User);
+  const [CurrentUser, setCurrentUser] = useState(
+    {} as CurrentUsersProfileResponse
+  );
+  const [Following, setFollowing] = useState(0);
   useEffect(() => {
-    getCurrentUser().then((data: User) => {
-      setCurrentUser(data);
-    });
+    fetchData();
   }, []);
+
+  const fetchData = (): void => {
+    getCurrentUser().then((currentUser: CurrentUsersProfileResponse) => {
+      setCurrentUser(currentUser);
+    });
+
+    getFollowedArtist().then(
+      (followedArtists: UsersFollowedArtistsResponse) => {
+        setFollowing(followedArtists.artists.total || 0);
+      }
+    );
+  };
 
   return (
     <ProfileLayout>
       <>
         <div> Profile </div>
-        <div> {CurrentUser.display_name}</div>
-        <div> {CurrentUser.email}</div>
+        <div> name: {CurrentUser.display_name}</div>
+        <div> email: {CurrentUser.email}</div>
+        <div> url: {CurrentUser.external_urls?.spotify}</div>
+        <div> followers: {CurrentUser.followers?.total}</div>
+        <div> following: {Following}</div>
       </>
     </ProfileLayout>
   );
