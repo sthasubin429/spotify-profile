@@ -11,10 +11,12 @@ export default function SpotifyLogo({
   return (
     <div>
       <Image
-        src="/assets/spotify-logo.svg"
+        src="/assets/spotify-logo.png"
         alt="Spotify"
         width={width}
         height={height}
+        className="w-auto h-auto p-6 my-6"
+        priority={true}
       />
     </div>
   );
