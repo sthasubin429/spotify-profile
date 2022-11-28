@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import ProfileLayout from 'layouts/ProfileLayout';
 import {
   CurrentUsersProfileResponse,
   UsersFollowedArtistsResponse
@@ -28,15 +27,13 @@ export default function Profile(): ReactElement {
   };
 
   return (
-    <ProfileLayout>
-      <>
-        <div> Profile </div>
-        <div> name: {CurrentUser.display_name}</div>
-        <div> email: {CurrentUser.email}</div>
-        <div> url: {CurrentUser.external_urls?.spotify}</div>
-        <div> followers: {CurrentUser.followers?.total}</div>
-        <div> following: {Following}</div>
-      </>
-    </ProfileLayout>
+    <>
+      <div> Profile </div>
+      <div> name: {CurrentUser.display_name}</div>
+      <div> email: {CurrentUser.email}</div>
+      <div> url: {CurrentUser.external_urls?.spotify}</div>
+      <div> followers: {CurrentUser.followers?.total}</div>
+      <div> following: {Following}</div>
+    </>
   );
 }
