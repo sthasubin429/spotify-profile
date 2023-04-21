@@ -1,5 +1,10 @@
-import { getCookie, setCookie } from 'cookies-next';
-import { accessTokenKey, expiresInKey, refreshTokenKey } from './constant';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import {
+  accessTokenKey,
+  expiresInKey,
+  refreshTokenKey,
+  stateKey
+} from './constant';
 
 export const isAuthenticated = (): boolean => {
   const accessToken = getAccessToken();
@@ -35,4 +40,11 @@ export const setRefreshToken = (refreshToken: string): void => {
 export const headers = {
   Authorization: `Bearer ${getAccessToken()}`,
   'Content-Type': 'application/json'
+};
+
+export const deleteAllCookies = (): void => {
+  deleteCookie(expiresInKey);
+  deleteCookie(accessTokenKey);
+  deleteCookie(refreshTokenKey);
+  deleteCookie(stateKey);
 };
