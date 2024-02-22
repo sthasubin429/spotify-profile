@@ -5,7 +5,7 @@ import SpotifyLogo from './shared/SpotifyLogo';
 
 export default function Navbar(): ReactElement {
   return (
-    <div className="min-h-screen w-60 bg-blackAlt absolute top-0 left-0">
+    <div className="absolute left-0 top-0 min-h-screen w-60 bg-blackAlt">
       <SpotifyLogo />
       <Nav />
       <Logout />

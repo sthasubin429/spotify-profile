@@ -15,7 +15,7 @@ export default function SpotifyLogo({
         alt="Spotify"
         width={width}
         height={height}
-        className="w-auto h-auto p-6 my-6"
+        className="my-6 h-auto w-auto p-6"
         priority={true}
       />
     </div>
