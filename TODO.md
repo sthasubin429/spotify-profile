@@ -16,11 +16,11 @@ The minimal viable product includes:
 **Description**: Add React Query library for efficient data fetching, caching, and state management instead of manual axios + useState.
 
 **Tasks**:
-- [ ] Install `@tanstack/react-query` package
-- [ ] Install `@tanstack/react-query-devtools` for development debugging
-- [ ] Configure QueryClient in `_app.tsx`
-- [ ] Wrap app with QueryClientProvider
-- [ ] Import and configure devtools in development
+- [x] Install `@tanstack/react-query` package
+- [x] Install `@tanstack/react-query-devtools` for development debugging
+- [x] Configure QueryClient in `_app.tsx`
+- [x] Wrap app with QueryClientProvider
+- [x] Import and configure devtools in development
 
 **Estimated Time**: 30 minutes
 
@@ -34,19 +34,19 @@ The minimal viable product includes:
 **Description**: Create a centralized client for all Spotify Web API calls with automatic token injection, error handling, and reusable functions.
 
 **Tasks**:
-- [ ] Create axios instance with base URL `https://api.spotify.com/v1`
-- [ ] Add interceptor to inject access token from cookies
-- [ ] Add interceptor to handle 401 errors (token refresh)
-- [ ] Export function: `getMe()` - Get current user profile
-- [ ] Export function: `getTopArtists(timeRange, limit)` - Top artists
-- [ ] Export function: `getTopTracks(timeRange, limit)` - Top tracks
-- [ ] Export function: `getMyPlaylists(limit)` - User's playlists
-- [ ] Export function: `getPlaylistTracks(playlistId)` - Tracks in playlist
-- [ ] Export function: `getRecentlyPlayed(limit)` - Recently played tracks
-- [ ] Export function: `getAudioFeatures(trackIds[])` - Audio features for tracks
-- [ ] Export function: `getRecommendations(params)` - Get recommendations
-- [ ] Export function: `getPlaylist(playlistId)` - Get single playlist details
-- [ ] Add error handling with user-friendly messages
+- [x] Create axios instance with base URL `https://api.spotify.com/v1`
+- [x] Add interceptor to inject access token from cookies
+- [x] Add interceptor to handle 401 errors (token refresh)
+- [x] Export function: `getMe()` - Get current user profile
+- [x] Export function: `getTopArtists(timeRange, limit)` - Top artists
+- [x] Export function: `getTopTracks(timeRange, limit)` - Top tracks
+- [x] Export function: `getMyPlaylists(limit)` - User's playlists
+- [x] Export function: `getPlaylistTracks(playlistId)` - Tracks in playlist
+- [x] Export function: `getRecentlyPlayed(limit)` - Recently played tracks
+- [x] Export function: `getAudioFeatures(trackIds[])` - Audio features for tracks
+- [x] Export function: `getRecommendations(params)` - Get recommendations
+- [x] Export function: `getPlaylist(playlistId)` - Get single playlist details
+- [x] Add error handling with user-friendly messages
 
 **Estimated Time**: 1.5 hours
 
@@ -68,16 +68,16 @@ The minimal viable product includes:
 **Description**: Define all TypeScript interfaces for Spotify API responses.
 
 **Tasks**:
-- [ ] Create `SpotifyUser` interface (id, display_name, external_urls, followers, images, uri, etc.)
-- [ ] Create `SpotifyArtist` interface (id, name, genres, images, followers, popularity, etc.)
-- [ ] Create `SpotifyTrack` interface (id, name, artists[], album, duration_ms, popularity, explicit, etc.)
-- [ ] Create `SpotifyPlaylist` interface (id, name, owner, tracks, images, description, public, etc.)
-- [ ] Create `SpotifyAlbum` interface (id, name, artists[], release_date, images, total_tracks, etc.)
-- [ ] Create `SpotifyRecentlyPlayed` interface (track, context, played_at)
-- [ ] Create `SpotifyAudioFeatures` interface (energy, danceability, acousticness, etc.)
-- [ ] Create `SpotifyRecommendations` interface (tracks[], seeds[])
-- [ ] Create `TimeRange` enum (short_term, medium_term, long_term)
-- [ ] Create `PaginatedResponse<T>` generic interface
+- [x] Create `SpotifyUser` interface (id, display_name, external_urls, followers, images, uri, etc.)
+- [x] Create `SpotifyArtist` interface (id, name, genres, images, followers, popularity, etc.)
+- [x] Create `SpotifyTrack` interface (id, name, artists[], album, duration_ms, popularity, explicit, etc.)
+- [x] Create `SpotifyPlaylist` interface (id, name, owner, tracks, images, description, public, etc.)
+- [x] Create `SpotifyAlbum` interface (id, name, artists[], release_date, images, total_tracks, etc.)
+- [x] Create `SpotifyRecentlyPlayed` interface (track, context, played_at)
+- [x] Create `SpotifyAudioFeatures` interface (energy, danceability, acousticness, etc.)
+- [x] Create `SpotifyRecommendations` interface (tracks[], seeds[])
+- [x] Create `TimeRange` enum (short_term, medium_term, long_term)
+- [x] Create `PaginatedResponse<T>` generic interface
 
 **Estimated Time**: 45 minutes
 
@@ -89,10 +89,10 @@ The minimal viable product includes:
 **Description**: Add Spotify API related constants.
 
 **Tasks**:
-- [ ] Add `SPOTIFY_API_URL = 'https://api.spotify.com/v1'`
-- [ ] Add `TIME_RANGE_OPTIONS` object with labels and values
-- [ ] Add default API limits (e.g., `DEFAULT_LIMIT_ARTISTS = 50`)
-- [ ] Add time range enums
+- [x] Add `SPOTIFY_API_URL = 'https://api.spotify.com/v1'`
+- [x] Add `TIME_RANGE_OPTIONS` object with labels and values
+- [x] Add default API limits (e.g., `DEFAULT_LIMIT_ARTISTS = 50`)
+- [x] Add time range enums
 
 **Estimated Time**: 15 minutes
 
@@ -538,10 +538,10 @@ The minimal viable product includes:
 **File**: `TODO.md` (this file)
 
 **Tasks**:
-- [ ] ✅ Create comprehensive task breakdown (DONE)
-- [ ] ✅ Organize by phases and dependencies
-- [ ] ✅ Add time estimates
-- [ ] ✅ Include detailed descriptions
+- [x] ✅ Create comprehensive task breakdown (DONE)
+- [x] ✅ Organize by phases and dependencies
+- [x] ✅ Add time estimates
+- [x] ✅ Include detailed descriptions
 
 ---
 
