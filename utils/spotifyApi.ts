@@ -2,34 +2,37 @@ import axios from 'axios';
 import { getCookie, setCookie } from 'cookies-next';
 
 const spotifyApi = axios.create({
-  baseURL: 'https://api.spotify.com/v1',
+  baseURL: 'https://api.spotify.com/v1'
 });
 
 spotifyApi.interceptors.request.use(
-  (config) => {
+  config => {
     const token = getCookie('spotify-token');
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );
 
 spotifyApi.interceptors.response.use(
-  (response) => response,
-  async (error) => {
+  response => response,
+  async error => {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         const refreshToken = getCookie('spotify-refresh-token');
-        const response = await axios.get(`/api/refresh_token?refresh_token=${refreshToken}`);
+        const response = await axios.get(
+          `/api/refresh_token?refresh_token=${refreshToken}`
+        );
         const { access_token } = response.data;
         setCookie('spotify-token', access_token);
-        spotifyApi.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+        spotifyApi.defaults.headers.common['Authorization'] =
+          'Bearer ' + access_token;
         return spotifyApi(originalRequest);
       } catch (refreshError) {
         return Promise.reject(refreshError);
@@ -44,7 +47,7 @@ export const getMe = () => spotifyApi.get('/me');
 export const getTopArtists = (timeRange: string, limit: number) =>
   spotifyApi.get(`/me/top/artists?time_range=${timeRange}&limit=${limit}`);
 
-export const getTopTracks = (timeRange:string, limit: number) =>
+export const getTopTracks = (timeRange: string, limit: number) =>
   spotifyApi.get(`/me/top/tracks?time_range=${timeRange}&limit=${limit}`);
 
 export const getMyPlaylists = (limit: number) =>
