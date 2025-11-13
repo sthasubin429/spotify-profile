@@ -28,7 +28,13 @@ export default function handler(
   res: NextApiResponse<Data>
 ): void {
   let state = generateRandomString(16);
-  setCookie(stateKey, state, { req, res, maxAge: 60 * 60 * 24 });
+  setCookie(stateKey, state, {
+    req,
+    res,
+    maxAge: 60 * 60 * 24,
+    path: '/',
+    sameSite: 'lax'
+  });
 
   res.redirect(
     `${process.env.SPOTIFY_API_URL}/authorize?` +

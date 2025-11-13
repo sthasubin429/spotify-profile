@@ -6,37 +6,40 @@ type Data = {
   error?: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
-): void {
-  let refreshToken = req.query.refresh_token;
-  let url = `${process.env.SPOTIFY_API_URL}/api/token`;
-  let headers = {
-    Authorization:
-      'Basic ' +
-      Buffer.from(
-        process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET
-      ).toString('base64'),
-    'Content-Type': 'application/x-www-form-urlencoded'
-  };
-  let body = {
-    grant_type: 'refresh_token',
-    refresh_token: refreshToken
-  };
+): Promise<void> {
+  try {
+    const refreshToken = req.query.refresh_token;
+    const url = `${process.env.SPOTIFY_API_URL}/api/token`;
+    const headers = {
+      Authorization:
+        'Basic ' +
+        Buffer.from(
+          process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET
+        ).toString('base64'),
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    const body = {
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken
+    };
 
-  fetch(url, {
-    method: 'POST',
-    headers,
-    body: stringify(body)
-  }).then(response => {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: stringify(body)
+    });
+
     if (response.ok) {
-      response.json().then(data => {
-        delete data.scope;
-        res.send(data);
-      });
+      const data = await response.json();
+      delete data.scope;
+      res.status(200).json(data);
     } else {
-      res.status(response.status).send({ error: 'refresh_token_fail' });
+      res.status(response.status).json({ error: 'refresh_token_fail' });
     }
-  });
+  } catch {
+    res.status(500).json({ error: 'refresh_token_fail' });
+  }
 }

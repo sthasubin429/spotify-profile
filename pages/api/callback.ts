@@ -9,13 +9,13 @@ type Data = {
   name: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
-): void {
+): Promise<void> {
   let code = req.query.code || null;
   let state = req.query.state || null;
-  let storedState = getCookie(stateKey, { req, res });
+  let storedState = await getCookie(stateKey, { req, res });
 
   let url = `${process.env.SPOTIFY_API_URL}/api/token`;
   let body = {

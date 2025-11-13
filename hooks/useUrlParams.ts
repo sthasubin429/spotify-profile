@@ -5,7 +5,7 @@ export default function useUrlParams(): SpotifyTokenResponse | null {
   const router = useRouter();
   try {
     return JSON.parse(decodeURIComponent(router.asPath.substring(2)));
-  } catch (e) {
+  } catch {
     return null;
   }
 }

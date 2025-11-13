@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { accessTokenKey } from '../utils/constant';
 import {
@@ -10,12 +9,13 @@ import {
 } from '../utils/spotify';
 
 export default function useAuthenticated(): boolean {
-  const router = useRouter();
   const [authenticated, setAuthenticated] = useState(isAuthenticated());
 
   useEffect(() => {
-    let authToken = getAccessToken();
-    let refreshToken = getRefreshToken();
+    const authToken = getAccessToken();
+    const refreshToken = getRefreshToken();
+
+    // Only refresh if we have tokens but aren't authenticated yet
     if (!authenticated && authToken && refreshToken) {
       axios
         .get(`api/refresh_token?refresh_token=${refreshToken}`)
@@ -26,12 +26,9 @@ export default function useAuthenticated(): boolean {
         })
         .catch(() => {
           setAuthenticated(false);
-        })
-        .finally(() => {
-          router.reload();
         });
     }
-  }, [authenticated, router]);
+  }, []); // Empty dependency array - run only once on mount
 
   return authenticated;
 }
