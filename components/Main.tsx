@@ -1,28 +1,34 @@
 import React, { ReactElement, useEffect } from 'react';
 import Login from './Login';
-import { setAccessToken, setRefreshToken } from 'utils/spotify';
 import useUrlParams from 'hooks/useUrlParams';
-import useAuthenticated from 'hooks/useAuthenticated';
+import { useAuth } from '../contexts/AuthContext';
+import { useRouter } from 'next/router';
+import { setCookie } from 'cookies-next';
+import {
+  accessTokenKey,
+  expiresInKey,
+  refreshTokenKey
+} from '../utils/constant';
 
 export default function Main(): ReactElement {
   const params = useUrlParams();
-
-  const isAuthenticated = useAuthenticated();
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (params) {
-      setAccessToken(params.access_token || '');
-      setRefreshToken(params.refresh_token || '');
+      const expirationTimeStamp = new Date(new Date().getTime() + 3600 * 1000);
+      setCookie(expiresInKey, expirationTimeStamp);
+      setCookie(accessTokenKey, params.access_token || '');
+      setCookie(refreshTokenKey, params.refresh_token || '');
     }
   }, [params]);
 
-  return (
-    <>
-      {isAuthenticated ? (
-        <div className="text-base font-bold"> Logged </div>
-      ) : (
-        <Login />
-      )}
-    </>
-  );
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/profile');
+    }
+  }, [isAuthenticated, router]);
+
+  return <>{!isAuthenticated && <Login />}</>;
 }
