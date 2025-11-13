@@ -8,7 +8,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint pages/ components/ layouts/ hooks/ utils/ shared/",
-    "pre-commit": "eslint pages/ components/ layouts/ hooks/ utils/ shared/ --max-warnings=0",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "pre-commit": "npm run test:ci && npx eslint pages/ components/ layouts/ hooks/ utils/ shared/ --max-warnings=0",
     "prepare": "husky"
   },
   "author": "Subin Shrestha <subinshrestha922@gmail.com>",
@@ -31,15 +35,22 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.1.17",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/coverage-v8": "^4.0.8",
     "autoprefixer": "^10.4.20",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^16.5.0",
     "husky": "^9.1.7",
+    "jsdom": "^27.2.0",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.17",
+    "vitest": "^4.0.8"
   }
 }
