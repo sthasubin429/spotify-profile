@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useAuth } from '../contexts/AuthContext';
 import { useTopArtistsInfinite } from '../hooks/useTopArtistsInfinite';
@@ -6,7 +7,7 @@ import { TimeRange } from '../shared/interface';
 import ArtistCard from '../components/ArtistCard';
 import TimeRangeSelector from '../components/TimeRangeSelector';
 
-export default function TopArtistsPage() {
+function TopArtistsPage() {
   const { isAuthenticated } = useAuth();
   const router = useRouter();
   const [timeRange, setTimeRange] = useState<TimeRange>(TimeRange.Medium);
@@ -85,3 +86,5 @@ export default function TopArtistsPage() {
     </div>
   );
 }
+
+export default dynamic(() => Promise.resolve(TopArtistsPage), { ssr: false });

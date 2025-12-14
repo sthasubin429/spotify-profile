@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -46,7 +47,7 @@ export default function Sidebar() {
           <ul className="space-y-1">
             {links.map(({ href, label }) => (
               <li key={href}>
-                <a
+                <Link
                   href={href}
                   className={`block px-4 py-3 rounded transition-colors duration-200 font-medium ${
                     router.pathname === href
@@ -55,7 +56,7 @@ export default function Sidebar() {
                   }`}
                 >
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
