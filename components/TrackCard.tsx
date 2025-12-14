@@ -3,7 +3,6 @@ import { SpotifyTrack } from '../shared/interface';
 
 interface TrackCardProps {
   track: SpotifyTrack;
-  onClick?: () => void;
 }
 
 function formatDuration(duration_ms: number) {
@@ -12,13 +11,15 @@ function formatDuration(duration_ms: number) {
   return `${minutes}:${seconds.padStart(2, '0')}`;
 }
 
-export default function TrackCard({ track, onClick }: TrackCardProps) {
+export default function TrackCard({ track }: TrackCardProps) {
   return (
-    <div
+    <a
+      href={track.external_urls.spotify}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`flex flex-col md:flex-row cursor-pointer items-center gap-4 md:gap-5 rounded 
       bg-gray-900 p-3 md:p-4 text-white transition-all duration-200 hover:bg-gray-800 
       border border-gray-800 overflow-hidden`}
-      onClick={onClick}
     >
       <div className="shrink-0">
         <img
@@ -48,6 +49,6 @@ export default function TrackCard({ track, onClick }: TrackCardProps) {
           {formatDuration(track.duration_ms)}
         </div>
       </div>
-    </div>
+    </a>
   );
 }

@@ -3,15 +3,16 @@ import { SpotifyArtist } from '../shared/interface';
 
 interface ArtistCardProps {
   artist: SpotifyArtist;
-  onClick?: () => void;
 }
 
-export default function ArtistCard({ artist, onClick }: ArtistCardProps) {
+export default function ArtistCard({ artist }: ArtistCardProps) {
   return (
-    <div
-      className={`cursor-pointer rounded bg-gray-900 p-4 md:p-5 text-white transition-all 
+    <a
+      href={artist.external_urls.spotify}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`block cursor-pointer rounded bg-gray-900 p-4 md:p-5 text-white transition-all 
       duration-200 hover:bg-gray-800 border border-gray-800`}
-      onClick={onClick}
     >
       <div className="mb-4 flex justify-center">
         <img
@@ -28,6 +29,6 @@ export default function ArtistCard({ artist, onClick }: ArtistCardProps) {
           {artist.genres.slice(0, 2).join(', ') || 'Artist'}
         </div>
       </div>
-    </div>
+    </a>
   );
 }

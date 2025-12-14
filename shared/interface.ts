@@ -38,6 +38,9 @@ export type SpotifyArtist = {
     total: number;
   };
   popularity: number;
+  external_urls: {
+    spotify: string;
+  };
 };
 
 export type SpotifyTrack = {
@@ -48,6 +51,9 @@ export type SpotifyTrack = {
   duration_ms: number;
   popularity: number;
   explicit: boolean;
+  external_urls: {
+    spotify: string;
+  };
 };
 
 export type SpotifyPlaylist = {
