@@ -86,6 +86,21 @@ export type SpotifyAlbum = {
     width: number;
   }[];
   total_tracks: number;
+  external_urls: {
+    spotify: string;
+  };
+};
+
+export type SpotifySavedAlbum = {
+  added_at: string;
+  album: SpotifyAlbum;
+};
+
+export type RecentlyPlayedResponse = {
+  items: SpotifyRecentlyPlayed[];
+  next: string | null;
+  cursors: { after: string; before: string } | null;
+  limit: number;
 };
 
 export type SpotifyRecentlyPlayed = {

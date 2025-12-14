@@ -80,4 +80,7 @@ export const getRecommendations = (params: any) =>
 export const getPlaylist = (playlistId: string) =>
   spotifyApi.get(`/playlists/${playlistId}`);
 
+export const getMySavedAlbums = (limit: number, offset: number = 0) =>
+  spotifyApi.get(`/me/albums?limit=${limit}&offset=${offset}`);
+
 export default spotifyApi;
