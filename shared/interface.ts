@@ -70,6 +70,9 @@ export type SpotifyPlaylist = {
   }[];
   description: string;
   public: boolean;
+  external_urls: {
+    spotify: string;
+  };
 };
 
 export type SpotifyAlbum = {

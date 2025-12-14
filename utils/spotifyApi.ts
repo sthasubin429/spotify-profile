@@ -62,8 +62,8 @@ export const getTopTracks = (
     `/me/top/tracks?time_range=${timeRange}&limit=${limit}&offset=${offset}`
   );
 
-export const getMyPlaylists = (limit: number) =>
-  spotifyApi.get(`/me/playlists?limit=${limit}`);
+export const getMyPlaylists = (limit: number, offset: number = 0) =>
+  spotifyApi.get(`/me/playlists?limit=${limit}&offset=${offset}`);
 
 export const getPlaylistTracks = (playlistId: string) =>
   spotifyApi.get(`/playlists/${playlistId}/tracks`);
