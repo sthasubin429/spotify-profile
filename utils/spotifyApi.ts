@@ -53,8 +53,14 @@ export const getTopArtists = (
     `/me/top/artists?time_range=${timeRange}&limit=${limit}&offset=${offset}`
   );
 
-export const getTopTracks = (timeRange: string, limit: number) =>
-  spotifyApi.get(`/me/top/tracks?time_range=${timeRange}&limit=${limit}`);
+export const getTopTracks = (
+  timeRange: string,
+  limit: number,
+  offset: number = 0
+) =>
+  spotifyApi.get(
+    `/me/top/tracks?time_range=${timeRange}&limit=${limit}&offset=${offset}`
+  );
 
 export const getMyPlaylists = (limit: number) =>
   spotifyApi.get(`/me/playlists?limit=${limit}`);

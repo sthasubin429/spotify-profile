@@ -36,7 +36,8 @@ export default function Sidebar() {
         </svg>
       </button>
       <aside
-        className={`fixed left-0 top-0 z-10 h-screen w-64 transform bg-black text-white transition-transform duration-300 ease-in-out md:translate-x-0 border-r border-gray-800 ${
+        className={`fixed left-0 top-0 z-10 h-screen w-64 transform bg-black text-white 
+        transition-transform duration-300 ease-in-out md:translate-x-0 border-r border-gray-800 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >

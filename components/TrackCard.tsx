@@ -15,17 +15,19 @@ function formatDuration(duration_ms: number) {
 export default function TrackCard({ track, onClick }: TrackCardProps) {
   return (
     <div
-      className="flex flex-col md:flex-row cursor-pointer items-center gap-4 md:gap-5 rounded bg-gray-900 p-3 md:p-4 text-white transition-all duration-200 hover:bg-gray-800 border border-gray-800 overflow-hidden"
+      className={`flex flex-col md:flex-row cursor-pointer items-center gap-4 md:gap-5 rounded 
+      bg-gray-900 p-3 md:p-4 text-white transition-all duration-200 hover:bg-gray-800 
+      border border-gray-800 overflow-hidden`}
       onClick={onClick}
     >
-      <div className="flex-shrink-0">
+      <div className="shrink-0">
         <img
           src={track.album.images[0]?.url || '/vercel.svg'}
           alt={track.album.name}
           className="h-16 w-16 md:h-20 md:w-20 object-cover rounded"
         />
       </div>
-      <div className="flex-grow text-center md:text-left min-w-0">
+      <div className="grow text-center md:text-left min-w-0">
         <div className="font-bold text-base md:text-lg truncate">
           {track.name}
         </div>
@@ -36,7 +38,7 @@ export default function TrackCard({ track, onClick }: TrackCardProps) {
           {track.album.name}
         </div>
       </div>
-      <div className="flex items-center gap-3 md:gap-4 flex-shrink-0">
+      <div className="flex items-center gap-3 md:gap-4 shrink-0">
         {track.explicit && (
           <span className="rounded bg-red-600 px-2 py-0.5 text-xs font-bold text-white">
             E

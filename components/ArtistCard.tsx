@@ -9,7 +9,8 @@ interface ArtistCardProps {
 export default function ArtistCard({ artist, onClick }: ArtistCardProps) {
   return (
     <div
-      className="cursor-pointer rounded bg-gray-900 p-4 md:p-5 text-white transition-all duration-200 hover:bg-gray-800 border border-gray-800"
+      className={`cursor-pointer rounded bg-gray-900 p-4 md:p-5 text-white transition-all 
+      duration-200 hover:bg-gray-800 border border-gray-800`}
       onClick={onClick}
     >
       <div className="mb-4 flex justify-center">

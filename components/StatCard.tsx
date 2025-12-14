@@ -21,7 +21,8 @@ export default function StatCard({
 
   return (
     <div
-      className={`rounded bg-gray-900 border border-gray-800 text-white transition-all duration-200 hover:border-gray-700 ${sizeClasses[size]}`}
+      className={`rounded bg-gray-900 border border-gray-800 text-white transition-all 
+      duration-200 hover:border-gray-700 ${sizeClasses[size]}`}
     >
       <div className="flex items-center gap-3">
         {icon && <div className="text-green-500">{icon}</div>}
