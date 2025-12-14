@@ -110,9 +110,13 @@ export type SpotifyRecentlyPlayed = {
 };
 
 export type SpotifyAudioFeatures = {
-  energy: number;
-  danceability: number;
   acousticness: number;
+  danceability: number;
+  energy: number;
+  instrumentalness: number;
+  liveness: number;
+  speechiness: number;
+  valence: number;
 };
 
 export type SpotifyRecommendations = {
@@ -134,3 +138,36 @@ export type PaginatedResponse<T> = {
   next: string | null;
   previous: string | null;
 };
+
+// Wrapped Feature Types
+export type GenreCount = {
+  genre: string;
+  count: number;
+  percentage: number;
+};
+
+export type AlbumCount = {
+  album: SpotifyAlbum;
+  count: number;
+};
+
+export type WrappedData = {
+  user: SpotifyUser;
+  topTracks: SpotifyTrack[];
+  topArtists: SpotifyArtist[];
+  topGenres: GenreCount[];
+  topAlbums: AlbumCount[];
+  estimatedMinutes: number;
+  timeRange: TimeRange;
+  timeRangeLabel: string;
+  generatedAt: string;
+};
+
+export type SlideType =
+  | 'intro'
+  | 'minutes'
+  | 'top-songs'
+  | 'top-artists'
+  | 'top-genres'
+  | 'top-albums'
+  | 'outro';
