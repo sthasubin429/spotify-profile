@@ -1,1 +1,1 @@
-npm run test:ci && npx eslint pages/ components/ layouts/ hooks/ utils/ shared/ --max-warnings=0
+bun run pre-commit

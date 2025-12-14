@@ -15,13 +15,21 @@ function AppContent({ Component, pageProps }: AppProps) {
   );
 }
 
-export default function App({ Component, pageProps }: AppProps): ReactElement {
+export default function App({
+  Component,
+  pageProps,
+  router
+}: AppProps): ReactElement {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <AppContent Component={Component} pageProps={pageProps} />
+        <AppContent
+          Component={Component}
+          pageProps={pageProps}
+          router={router}
+        />
       </AuthProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

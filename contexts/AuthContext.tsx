@@ -3,6 +3,7 @@ import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import {
   createContext,
   ReactElement,
+  useCallback,
   useContext,
   useEffect,
   useState
@@ -15,25 +16,44 @@ import {
 
 interface AuthContextType {
   isAuthenticated: boolean;
+  logout: () => void;
+  setAuthenticated: (value: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
+  logout: () => {},
+  setAuthenticated: () => {}
 });
 
 export const AuthProvider = ({
-  children,
+  children
 }: {
   children: ReactElement;
 }): ReactElement => {
   const [isAuthenticatedState, setIsAuthenticatedState] = useState(() => {
     const accessToken = getCookie(accessTokenKey);
     const expiresIn = getCookie(expiresInKey);
-    if (accessToken && expiresIn && new Date() <= new Date(expiresIn as string)) {
+    if (
+      accessToken &&
+      expiresIn &&
+      new Date() <= new Date(expiresIn as string)
+    ) {
       return true;
     }
     return false;
   });
+
+  const logout = useCallback(() => {
+    deleteCookie(accessTokenKey);
+    deleteCookie(refreshTokenKey);
+    deleteCookie(expiresInKey);
+    setIsAuthenticatedState(false);
+  }, []);
+
+  const setAuthenticated = useCallback((value: boolean) => {
+    setIsAuthenticatedState(value);
+  }, []);
 
   useEffect(() => {
     const authToken = getCookie(accessTokenKey);
@@ -60,7 +80,13 @@ export const AuthProvider = ({
   }, [isAuthenticatedState]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated: isAuthenticatedState }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated: isAuthenticatedState,
+        logout,
+        setAuthenticated
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

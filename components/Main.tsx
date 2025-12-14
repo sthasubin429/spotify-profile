@@ -13,16 +13,17 @@ import {
 export default function Main(): ReactElement {
   const params = useUrlParams();
   const router = useRouter();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, setAuthenticated } = useAuth();
 
   useEffect(() => {
-    if (params) {
+    if (params && params.access_token) {
       const expirationTimeStamp = new Date(new Date().getTime() + 3600 * 1000);
       setCookie(expiresInKey, expirationTimeStamp);
-      setCookie(accessTokenKey, params.access_token || '');
+      setCookie(accessTokenKey, params.access_token);
       setCookie(refreshTokenKey, params.refresh_token || '');
+      setAuthenticated(true);
     }
-  }, [params]);
+  }, [params, setAuthenticated]);
 
   useEffect(() => {
     if (isAuthenticated) {

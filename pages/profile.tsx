@@ -5,11 +5,10 @@ import { useTopTracks } from '../hooks/useTopTracks';
 import ArtistCard from '../components/ArtistCard';
 import TrackCard from '../components/TrackCard';
 import { useAuth } from '../contexts/AuthContext';
-import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/router';
 
 const ProfilePage = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
   const router = useRouter();
   const { data: user, isLoading: userLoading, error: userError } = useMe();
   const {
@@ -31,8 +30,7 @@ const ProfilePage = () => {
   }
 
   const handleLogout = () => {
-    deleteCookie('spotify-token');
-    deleteCookie('spotify-refresh-token');
+    logout();
     router.push('/');
   };
 

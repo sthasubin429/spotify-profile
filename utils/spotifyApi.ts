@@ -44,8 +44,14 @@ spotifyApi.interceptors.response.use(
 
 export const getMe = () => spotifyApi.get('/me');
 
-export const getTopArtists = (timeRange: string, limit: number) =>
-  spotifyApi.get(`/me/top/artists?time_range=${timeRange}&limit=${limit}`);
+export const getTopArtists = (
+  timeRange: string,
+  limit: number,
+  offset: number = 0
+) =>
+  spotifyApi.get(
+    `/me/top/artists?time_range=${timeRange}&limit=${limit}&offset=${offset}`
+  );
 
 export const getTopTracks = (timeRange: string, limit: number) =>
   spotifyApi.get(`/me/top/tracks?time_range=${timeRange}&limit=${limit}`);

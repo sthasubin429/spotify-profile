@@ -22,6 +22,7 @@ export type SpotifyUser = {
     width: number;
   }[];
   uri: string;
+  product?: string;
 };
 
 export type SpotifyArtist = {
